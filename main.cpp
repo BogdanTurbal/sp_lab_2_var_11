@@ -184,7 +184,7 @@ void unite_equivalent() {
             }
         }
 
-        // Refine the partition P with X
+        // Refine the partition P
         vector<set<int>> newP;
         for (set<int> Y : P) {
             set<int> Y1 = set_intersection(Y, X);
@@ -225,7 +225,7 @@ void print_transitions_f(const vector<set<int>>& P) {
 
     for (const set<int>& from_set : P) {
         for (int a = 0; a < num_a; a++) {
-            // Create a set to store states reachable by the current character 'a'
+            // Create set to store states reachable by the current 
             set<int> reachable_states;
 
             for (int state : from_set) {
@@ -234,10 +234,8 @@ void print_transitions_f(const vector<set<int>>& P) {
                 }
             }
 
-            // Check which equivalent state set the reachable states belong to
             for (const set<int>& to_set : P) {
                 if (set_intersection(reachable_states, to_set).size() > 0) {
-                    // Print the transition
                     cout << "{";
                     for (auto it = from_set.begin(); it != from_set.end(); ++it) {
                         cout << *it;
